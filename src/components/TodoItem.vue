@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    import TodoItemEditFormVue from './TodoItemEditForm.vue';
+    import TodoItemEditForm from './TodoItemEditForm.vue';
 
     export default {
         props: {
@@ -61,7 +61,7 @@
                 this.isEditing = true;
             },
 
-            itemEdited(){
+            itemEdited(newLabel){
                 this.$emit('item-edited', newLabel);
                 this.isEditing = false;
                 this.focusOnEditButton();

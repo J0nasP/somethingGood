@@ -1,7 +1,7 @@
 <template>
     <form class="stack-small" @submit.prevent="onSubmit">
         <div>
-           <label class="edit-label">Edit name for &quot; {{label}} &quot;</label>
+           <label class="edit-label">Edit name for &quot; {{ label }} &quot;</label>
            <input
                 :id="id"
                 type="text"
@@ -12,11 +12,11 @@
         <div class="btn-group">
             <button type="button" class="btn" @click="onCancel">
                 Cancel
-                <span class="visually-hidden">editing {{label}}</span>
+                <span class="visually-hidden">editing {{ label }}</span>
             </button>
             <button type="submit" class="btn btn__primary">
                 Save
-                <span class="visually-hidden"> edit for {{label}}</span>
+                <span class="visually-hidden"> edit for {{ label }}</span>
             </button>
         </div>
     </form>
@@ -48,7 +48,7 @@
         },
         methods: {
             onSubmit(){
-                if(this.newLabel && this.newLabel !== this.label){
+                if (this.newLabel && this.newLabel !== this.label) {
                     this.$emit("item-edited", this.newLabel);
                 }
             },

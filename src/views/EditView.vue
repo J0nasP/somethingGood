@@ -1,7 +1,37 @@
+<script>
+import TodoItemVue from '../components/TodoItem.vue';
+
+export default{
+  components: {
+    TodoItemVue
+  },
+
+  data(){
+    return {
+      TodoItems:[
+        
+      ]
+    }
+  }
+}
+
+
+</script>
+
 <template>
-  <div class="edit">
-    <h1>This is an about page</h1>
+  <div class="edit" id="app">
+    <h1>Edit the todo List</h1>
+    <ul>
+      <li v-for="item in TodoItems" key="item.id">
+        <TodoItemVue
+        :id="item.id"
+        :label="item.label"
+        :done="item.done"
+        />
+      </li>
+    </ul>
   </div>
+
 </template>
 
 <style>
@@ -13,4 +43,3 @@
   }
 }
 </style>
-

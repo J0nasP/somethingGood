@@ -70,11 +70,11 @@
                 this.isEditing = false;
                 this.focusOnEditButton();
             },
-            focusOnEditButton(){
-                this.$nextTick(() => {
-                    const editButtonRef = this.$ref.editButton;
-                    editButtonRef.focus();
-                })
+            focusOnEditButton() {
+              this.$nextTick(() => {
+                const editButtonRef = this.$refs.editButton;
+                editButtonRef.focus();
+              });
             }
         },
         components: {

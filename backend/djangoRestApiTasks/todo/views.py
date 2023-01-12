@@ -28,7 +28,7 @@ def todo_items_details(request, pk):
     except:
         return HttpResponse(status=404)
 
-    if (request.method == 'PUTT'):
+    if (request.method == 'PUT'):
         data = JSONParser().parse(request)
         serializer = TodoSerializer(todo_item, data=data)
         if (serializer.is_valid()):

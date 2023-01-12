@@ -15,6 +15,24 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView/>
 </template>
 
+<!--
+<template>
+  <div id="app">
+    <TasksVue/>
+  </div>
+</template>
+-->
+<script>
+/*
+import TasksVue from './components/Tasks.vue'
+
+export default {
+  components: {
+    TasksVue
+  } 
+}
+*/
+</script>
 <style scoped>
 
 </style>

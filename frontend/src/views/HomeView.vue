@@ -39,7 +39,7 @@ export default {
     },
     async getData(){
       try {
-        const response = await this.$http.get('http://localhost:8000/api/tasks/');
+        const response = await this.$http.get('http://localhost:8000/api/todos/');
         this.TodoItems = response.data;
       } catch (error) {
         console.log(error)

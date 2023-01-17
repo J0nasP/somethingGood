@@ -3,7 +3,7 @@
         <div>
            <label class="edit-label">Edit name for &quot; {{ label }} &quot;</label>
            <input
-                :id="id"
+                :id="taskId"
                 type="text"
                 ref="labelInput"
                 autocomplete="off"
@@ -30,7 +30,7 @@
                 type: String,
                 required: true,
             },
-            id: {
+            taskId: {
                 type: String,
                 required: true,
             }

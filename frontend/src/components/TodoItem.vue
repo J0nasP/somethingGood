@@ -3,7 +3,7 @@
         <div>
         <input 
             type="checkbox"
-            :taskId="taskId"
+            :id="taskId"
             :checked="isDone"
             @change="$emit('checkbox-changed')"/>
         <label for="taskId">{{label}}</label>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <TodoItemEditForm v-else
-                            :taskId="taskId"
+                            :id="taskId"
                             :label="label"
                             @item-edited="itemEdited"
                             @edit-cancelled="editCancelled"/>
@@ -37,12 +37,14 @@
         props: {
             label: {required: true, type: String},
             done: {default: false, type: Boolean},
-            taskId: {required: false, type: String}
         },
 
         data() {
             return {
-                isEditing: false
+                isEditing: false,
+                TodoItem: [
+                  
+                ]
             };
         },
 

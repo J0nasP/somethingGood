@@ -1,6 +1,5 @@
 <script>
 import { RouterView } from 'vue-router';
-import uniqueId from 'lodash.uniqueid';
 import TodoItemVue from '@/components/TodoItem.vue';
 import TodoFormVue from '@/components/TodoForm.vue';
 
@@ -26,7 +25,6 @@ export default {
       try {
 
         const response = await this.$http.post('http://localhost:8000/backend/tasks/', {
-          taskId: uniqueId(todoLabel),
           label: todoLabel,
           done: false
         });
@@ -85,7 +83,7 @@ export default {
       <ul>
         <li v-for="item in TodoItems" :key="item.id">
           <TodoItemVue
-          :todoId="item.todoId"
+          :id="item.id"
           :label="item.label"
           :done="item.done"
           @checkbox-changed="updateDoneStatus(item.id)"

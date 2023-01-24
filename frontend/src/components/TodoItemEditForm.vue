@@ -30,10 +30,7 @@
                 type: String,
                 required: true,
             },
-            taskId: {
-                type: String,
-                required: true,
-            }
+
         },
 
         mounted(){

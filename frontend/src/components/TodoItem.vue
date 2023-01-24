@@ -37,13 +37,14 @@
         props: {
             label: {required: true, type: String},
             done: {default: false, type: Boolean},
+            id: {required: true, type: Number}
         },
 
         data() {
             return {
                 isEditing: false,
                 TodoItem: [
-                  
+
                 ]
             };
         },

@@ -14,7 +14,7 @@ export default {
   data(){
     return {
       TodoItems: [
-        
+      
       ]
     }
   },
@@ -25,6 +25,7 @@ export default {
       try {
 
         const response = await this.$http.post('http://localhost:8000/backend/tasks/', {
+          id: this.id,
           label: todoLabel,
           done: false
         });
@@ -39,15 +40,51 @@ export default {
       const toDoToUpdate = this.TodoItems.find((item) => item.todoId == todoId)
       toDoToUpdate.done = !toDoToUpdate.done
     },
-    deleteTodo(todoId){
-      const itemIndex = this.TodoItems.findIndex((item) => item.todoId === todoId)
+
+    async deleteTodo(taskId){
+      const itemIndex = this.TodoItems.findIndex((item) => item.taskId === taskId)
+
+      try {
+      
+      await this.$http.delete(`http://localhost:8000/backend/tasks/${taskId}`)
+    
+      }catch(error) {
+      console.log(error)
+    }
       this.TodoItems.splice(itemIndex, 1)
-      this.$refs.listSammary.focus()
     },
+
+    async toggleTodo(task, newLabel){
+      try{
+
+        const response = await this.$http.put(`http://localhost:8000/backend/tasks/${task.taskId}`,
+          {
+            done: !task.done,
+            label: newLabel,
+            id: this.id
+          }
+        );
+
+          let taskIndex = this.TodoItems.find((t) => t.taskId == task.taskId)
+          if (taskIndex == task){
+            task.label = newLabel
+            return response.data
+          }
+          return task
+        
+          
+
+      }catch(error) {
+        console.log(error)
+      }
+    },
+
     editTodo(todoId, newLabel){
+
       const toDoToEdit = this.TodoItems.find((item) => item.todoId === todoId)
       toDoToEdit.label = newLabel
     },
+
     async getData(){
       try {
         const response = await this.$http.get('http://localhost:8000/backend/tasks/');
@@ -83,12 +120,12 @@ export default {
       <ul>
         <li v-for="item in TodoItems" :key="item.id">
           <TodoItemVue
-          :id="item.id"
+          :id="item.taskId"
           :label="item.label"
           :done="item.done"
           @checkbox-changed="updateDoneStatus(item.id)"
           @item-deleted="deleteTodo(item.taskId)"
-          @item-edited="editTodo(item.id, $event)"
+          @item-edited="toggleTodo(item, $event)"
           />
         </li>
       </ul>

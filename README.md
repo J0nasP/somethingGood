@@ -33,3 +33,7 @@ npm run build
 ```sh
 npm run lint
 ```
+### Start Django server
+```sh
+python manage.py runserver
+```

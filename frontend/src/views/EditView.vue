@@ -22,13 +22,7 @@ export default{
   <div class="edit" id="app">
     <h1>Edit the todo List</h1>
     <ul>
-      <li v-for="item in TodoItems" key="item.TodoId">
-        <TodoItemVue
-        :todoId="item.todoId"
-        :label="item.label"
-        :done="item.done"
-        />
-      </li>
+      He where suppossed to be something.....
     </ul>
   </div>
 
